@@ -1,0 +1,102 @@
+
+
+
+    <table id="tabla-celulares"style="border: 1px solid black ;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Capacity</th>
+                <th>Color</th>
+                <th>ScreenSize</th>
+                <th>Generation</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            <tr *ngFor = "let test of testList">
+                
+                <!--<td *ngIf = "test.data?.price && test.data?.color">{{ test.id }}</td>
+                <td *ngIf = "test.data?.price && test.data?.color">{{ test.name }}</td>
+                <td *ngIf = "test.data?.price && test.data?.color">{{ test.data.price }}</td>
+                <td *ngIf = "test.data?.price && test.data?.color">{{ test.data.color }}</td>-->
+
+                <td >{{ test.id }}</td>
+                <td >{{ test.name }}</td>
+                <td>{{ test.data?.Capacity || '-' }}</td>
+                <td>{{ test.data?.color || '-' }}</td>
+                <td>{{ test.data?.screenSize || '-' }}</td>
+                <td>{{ test.data?.generation || '-' }}</td>
+                <td>{{ test.data?.price || '-' }}</td>
+
+                <td class="table-actions">
+                    <button class="view" (click)="viewPhone(test)"> VIEW </button>                                        
+                </td>
+                <td class="table-actions">
+                    <button class="delete" (click)="deletePhone(test.id)"> DELETE </button>
+                </td>
+                <td></td>
+            </tr>
+            
+        </tbody>
+        <tfoot>
+            
+                <tr >
+                    
+                        <td></td>
+                        <td><input #firstInput type="text" [(ngModel)]="newPhone.name"  name="name" placeholder="NAME" required></td>
+                        <td><input [(ngModel)]="newPhone.data!.Capacity" name="capacity" placeholder="CAPACITY"></td>                        
+                        <td><input [(ngModel)]="newPhone.data!.color" name="color" placeholder="COLOR"></td>                        
+                        <td><input [(ngModel)]="newPhone.data!.screenSize" name="screenSize" placeholder="SCREEN SIZE"></td>
+                        <td><input [(ngModel)]="newPhone.data!.generation" name="generation" placeholder="GENERATION"></td>
+                        <td><input [(ngModel)]="newPhone.data!.price" name="price" placeholder="PRICE"></td>
+                        <td><button (click)="addPhone(newPhone)">ADD</button></td>
+                        
+                        
+                    
+                </tr>
+            
+        </tfoot>
+    </table>
+
+    <div id ='popUp' style="visibility:hidden">
+        <table>
+            <tr>
+                <td><label >ID</label></td> 
+                <td><input name='id' readonly /></td> 
+            </tr>
+            <tr>
+                <td><label>NAME</label></td>
+                <td><input  name="name" placeholder="NAME"></td>
+            </tr>
+            <tr>
+                <td><label>CAPACITY</label></td>
+                <td><input  name="capacity" placeholder="CAPACITY"></td>
+            </tr>
+            <tr>
+                <td><label>COLOR</label></td>
+                <td><input  name="color" placeholder="COLOR"></td>
+            </tr>
+            <tr>
+                <td><label>SCREEN SIZE</label></td>
+                <td><input name="screenSize" placeholder="SCREEN SIZE"></td>
+            </tr>
+            <tr>
+                <td><label>GENERATION</label></td>
+                <td><input  name="generation" placeholder="GENERATION"></td>
+            </tr>
+            <tr>
+                <td><label>PRICE</label></td>
+                <td><input  name="price" placeholder="PRICE"></td>
+            </tr>
+            
+                <div >
+                    <button (click)="updatePhone()">Save</button>
+                    <button (click)="closePopUp()">Cancel</button>
+                </div>            
+            
+        </table>
+    </div>
